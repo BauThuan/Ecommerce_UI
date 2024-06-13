@@ -1,0 +1,28 @@
+{
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "plugins": ["prettier"],
+    "rules": {
+      "prettier/prettier": [
+        "error",
+        {
+          "semi": true,
+          "singleQuote": false
+        }
+      ]
+    },
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    }
+  }
+  
