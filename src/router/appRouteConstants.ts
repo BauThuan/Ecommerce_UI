@@ -1,6 +1,9 @@
 /* eslint-disable prettier/prettier */
 export const appRouteConstants = {
   INDEX: "/",
+  AUTHENTICATION: {
+    INDEX: "authentication"
+  },
   BUILDER: {
     STATE: "/builder/:resumeState/:listingId",
     STATE_CREATE: "/builder/:resumeState",

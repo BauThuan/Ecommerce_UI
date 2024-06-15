@@ -1,5 +1,16 @@
 /* eslint-disable prettier/prettier */
-import { createTheme } from "@mantine/core";
+import { Container, createTheme, rem } from "@mantine/core";
+const CONTAINER_SIZES: Record<string, string> = {
+  xxs: rem(300),
+  xs: rem(400),
+  sm: rem(500),
+  md: rem(600),
+  lg: rem(700),
+  xl: rem(800),
+  xxl: rem(900),
+  xxxl: rem(1000),
+  xxxxl: rem(1500),
+};
 
 export const theme = createTheme({
   colors: {
@@ -80,4 +91,36 @@ export const theme = createTheme({
   headings: {
     fontFamily: "Gordita, sans-serif",
   },
+  spacing: {
+    xs: '4px',
+    sm: '8px',
+    md: '16px',
+    lg: '24px',
+    xl: '32px',
+    xxl: '40px',
+    xxxl: '48px',
+    xxxxl: '56px',
+  },
+  shadows: { default: '0px 8px 32px 0px rgba(0, 0, 0, 0.16)' },
+  breakpoints: {
+    xs: '0',
+    sm: '480',
+    md: '768',
+    lg: '1024',
+    xl: '1280',
+  },
+  components: {
+    Container: Container.extend({
+      vars: (_, { size, fluid }) => ({
+        root: {
+          '--container-size': fluid
+            ? '100%'
+            : size !== undefined && size in CONTAINER_SIZES
+            ? CONTAINER_SIZES[size]
+            : rem(size),
+        },
+      }),
+    }),
+  },
 });
+
