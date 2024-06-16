@@ -3,7 +3,6 @@ import { MantineProvider } from "@mantine/core";
 import { App } from "./router/index";
 import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 import { theme } from "./style/theme.styles";
-import { Container } from "@mantine/core";
 import { useChangeColorSchemeStore } from "./store/use-change-color-scheme";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n/locale.language";
@@ -21,9 +20,7 @@ export const Root = () => {
       <MantineEmotionProvider>
         <I18nextProvider i18n={i18n}>
           <BrowserRouter>
-            <Container size="xxxxl">
-              <App />
-            </Container>
+            <App />
           </BrowserRouter>
         </I18nextProvider>
       </MantineEmotionProvider>

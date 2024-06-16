@@ -5,7 +5,6 @@ import enTranslations from "./EN/en.json";
 import vnTranslations from "./VN/vn.json";
 
 const currentLanguage = localStorage.getItem("language") || "vn";
-console.log(">>> check", currentLanguage);
 i18n.use(initReactI18next).init({
   resources: {
     vn: {

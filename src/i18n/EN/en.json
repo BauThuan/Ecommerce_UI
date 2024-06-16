@@ -12,5 +12,14 @@
    "You have an account yet?": "You have an account yet?",
    "Hello Again!": "Hello Again!",
    "Welcome back to sign in. As a returning customer, you have access to your previously saved all information.": " Welcome back to sign in. As a returning customer, you have access to your previously saved all information.",
-   "Invalid email": "Invalid email"
+   "Invalid email": "Invalid email",
+   "Passwords did not match":"Passwords did not match",
+   "grocerymart": "grocerymart",
+   "Login": "Login",
+   "Set as default card": "Set as default card",
+   "Name must have at least 2 letters": "Name must have at least 2 letters",
+   "Address is required": "Address is required",
+   "Invalid phone number": "Invalid phone number",
+   "Quantity must be greater than 0": "Quantity must be greater than 0",
+   "Price must be greater than 0": "Price must be greater than 0"
 }

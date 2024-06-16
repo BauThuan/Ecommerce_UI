@@ -10,7 +10,16 @@
     "Recovery Password": "Khôi phục mật khẩu",
     "Set as defatult card": "Đặt làm thẻ mặc định",
     "You have an account yet?": "Bạn đã có tài khoản chưa?",
-    "Hello Again!": "Chào mừng trở lại !",
+    "Hello Again!": "Hello Again!",
     "Welcome back to sign in. As a returning customer, you have access to your previously saved all information.": "Chào mừng bạn quay lại đăng nhập. Với tư cách là khách hàng cũ, bạn có quyền truy cập vào tất cả thông tin đã lưu trước đó của mình.",
-    "Invalid email": "Email không đúng định dạng"
+    "Invalid email": "Email không đúng định dạng",
+    "Passwords did not match": "Mật khẩu không trùng khớp",
+    "grocerymart": "grocerymart",
+    "Login": "Đăng nhập",
+    "Set as default card": "Đặt làm mặc định",
+    "Name must have at least 2 letters": "Tên phải có ít nhất 2 chữ cái",
+    "Address is required": "Địa chỉ là bắt buộc",
+    "Invalid phone number": "Số điện thoại không hợp lệ",
+    "Quantity must be greater than 0": "Số lượng phải lớn hơn 0",
+    "Price must be greater than 0": "Giá phải lớn hơn 0"
 }
