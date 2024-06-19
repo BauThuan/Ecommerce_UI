@@ -51,6 +51,7 @@
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@mantinex/mantine-logo": "^1.0.1",
     "@types/js-cookie": "^3.0.6",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",

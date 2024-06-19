@@ -4,6 +4,8 @@ import RouterGuard from "../util/RouterGuard";
 import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 
 import { PageAuthentication } from "../ui-web/page-authentication";
+import { PageDashBoard } from "../ui-web/page-dashboard";
+
 
 export const App = () => {
   return (
@@ -13,14 +15,10 @@ export const App = () => {
         <Route path={appRouteConstants.AUTHENTICATION.INDEX} element={<PageAuthentication />} />
 
         <Route element={<RouterGuard />}>
-          {/* <Route
-            path={appRouteConstants.BOOKING.BOOKING_DETAIL}
-            element={
-              <Shell>
-                <PageListingsSearch />
-              </Shell>
-            }
-          /> */}
+          <Route
+            path={appRouteConstants.WEBSITE_DASHBOARD.INDEX}
+            element={<PageDashBoard/>}
+          />
         </Route>
       </Route>
     </Routes>

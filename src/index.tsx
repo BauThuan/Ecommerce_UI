@@ -5,6 +5,7 @@ import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 import { theme } from "./style/theme.styles";
 import { useChangeColorSchemeStore } from "./store/use-change-color-scheme";
 import { I18nextProvider } from "react-i18next";
+import { ActionBar } from "./ui-web/action-bar";
 import i18n from "./i18n/locale.language";
 import "@mantine/core/styles.css";
 
@@ -20,7 +21,10 @@ export const Root = () => {
       <MantineEmotionProvider>
         <I18nextProvider i18n={i18n}>
           <BrowserRouter>
-            <App />
+            <div>
+              <ActionBar />
+              <App />
+            </div>
           </BrowserRouter>
         </I18nextProvider>
       </MantineEmotionProvider>

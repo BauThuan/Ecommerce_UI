@@ -12,17 +12,22 @@ import { IconMail, IconLock, IconLockOpen, IconBrandGoogleFilled } from "@tabler
 import { useTranslationMessage } from "../../../hooks/use-translation-message";
 import { useQueryParams } from "../../../hooks/use-query-params";
 import { useEffect, useMemo } from "react";
-import { SCREENS_NAME_AUTHEN, COOKIE_OPTIONS } from "../constant";
+import { SCREENS_NAME_AUTHEN } from "../constant";
+// import { COOKIE_OPTIONS } from "../constant";
 import { ContentHeader } from "./ContentHeader";
 import { ContentFooter } from "./ContentFooter";
 import { useMediaQueryScreen } from "../../../hooks/use-media-query";
 import { useCustomForm } from "../../../hooks/use-custom-form";
-import Cookies from "js-cookie";
+
+import { useNavigate } from "react-router-dom";
+import { appRouteConstants } from "../../../router/appRouteConstants";
+// import Cookies from "js-cookie";
 
 export const AuthForm = () => {
   const { getQueryParams } = useQueryParams();
   const { formatMessage } = useTranslationMessage();
   const { isMobile } = useMediaQueryScreen();
+  const navigate = useNavigate();
   const form = useCustomForm();
   const theme = useMantineTheme();
 
@@ -30,12 +35,17 @@ export const AuthForm = () => {
     return getQueryParams === SCREENS_NAME_AUTHEN.SIGN_UP;
   }, [getQueryParams]);
 
-  const saveLoginInfo = () => {
-    const userInfo: string = "Hello";
-    Cookies.set("authToken", userInfo, COOKIE_OPTIONS);
-    Cookies.set("userId", userInfo, COOKIE_OPTIONS);
-    Cookies.set("userName", userInfo, COOKIE_OPTIONS);
+  const handleSignIn = () => {
+    window.history.replaceState(null, "", `/${appRouteConstants.WEBSITE_DASHBOARD.INDEX}`);
+    navigate(`/${appRouteConstants.WEBSITE_DASHBOARD.INDEX}`, { replace: true });
   };
+
+  // const saveLoginInfo = () => {
+  //   const userInfo: string = "Hello";
+  //   Cookies.set("authToken", userInfo, COOKIE_OPTIONS);
+  //   Cookies.set("userId", userInfo, COOKIE_OPTIONS);
+  //   Cookies.set("userName", userInfo, COOKIE_OPTIONS);
+  // };
 
   useEffect(() => {
     if (!showInputConfirmPassword) {
@@ -110,7 +120,7 @@ export const AuthForm = () => {
               label={formatMessage("Set as default card")}
               onChange={(event) => {
                 console.log(">>> check kerd", event.currentTarget.checked);
-                saveLoginInfo();
+                // saveLoginInfo();
               }}
             />
             <Anchor
@@ -126,6 +136,7 @@ export const AuthForm = () => {
           </Box>
           <Group justify="flex-end" mt="md">
             <Button
+              onClick={handleSignIn}
               color={theme.colors.autumn[0]}
               sx={{
                 color: theme.colors.dark[0],

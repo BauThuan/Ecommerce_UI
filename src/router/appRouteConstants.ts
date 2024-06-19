@@ -4,6 +4,9 @@ export const appRouteConstants = {
   AUTHENTICATION: {
     INDEX: "authentication"
   },
+  WEBSITE_DASHBOARD: {
+    INDEX: "dashboard"
+  },
   BUILDER: {
     STATE: "/builder/:resumeState/:listingId",
     STATE_CREATE: "/builder/:resumeState",
