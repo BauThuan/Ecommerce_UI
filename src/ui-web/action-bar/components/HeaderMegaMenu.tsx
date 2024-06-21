@@ -18,7 +18,6 @@ import {
   useMantineTheme,
   Autocomplete,
 } from "@mantine/core";
-import { MantineLogo } from "@mantinex/mantine-logo";
 import { useDisclosure } from "@mantine/hooks";
 import {
   IconNotification,
@@ -33,6 +32,7 @@ import {
 import { IconCart } from "../assets/IconCart";
 import classes from "../styles/HeaderMegaMenu.module.css";
 import { MenuAvatar } from "./Avatar";
+import { useTranslationMessage } from "../../../hooks/use-translation-message";
 
 const mockdata = [
   {
@@ -71,6 +71,7 @@ export function HeaderMegaMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
   const theme = useMantineTheme();
+  const { formatMessage } = useTranslationMessage();
 
   const links = mockdata.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
@@ -106,20 +107,20 @@ export function HeaderMegaMenu() {
                 color: theme.colors.dark[0],
               }}
             >
-              grocerymart
+              {formatMessage("grocerymart")}
             </Text>
           </Box>
 
           <Group h="100%" gap={0} visibleFrom="sm">
             <a href="#" className={classes.link}>
-              Home
+              {formatMessage(" Home")}
             </a>
             <HoverCard width={600} position="bottom" radius="md" shadow="md" withinPortal>
               <HoverCard.Target>
                 <a href="#" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
-                      Features
+                      {formatMessage("Features")}
                     </Box>
                     <IconChevronDown
                       style={{ width: rem(16), height: rem(16) }}
@@ -131,9 +132,9 @@ export function HeaderMegaMenu() {
 
               <HoverCard.Dropdown style={{ overflow: "hidden" }}>
                 <Group justify="space-between" px="md">
-                  <Text fw={500}>Features</Text>
+                  <Text fw={500}>{formatMessage("Features")}</Text>
                   <Anchor href="#" fz="xs">
-                    View all
+                    {formatMessage("View all")}
                   </Anchor>
                 </Group>
 
@@ -147,22 +148,22 @@ export function HeaderMegaMenu() {
                   <Group justify="space-between">
                     <div>
                       <Text fw={500} fz="sm">
-                        Get started
+                        {formatMessage("Get started")}
                       </Text>
                       <Text size="xs" c="dimmed">
-                        Their food sources have decreased, and their numbers
+                        {formatMessage("Their food sources have decreased, and their numbers")}
                       </Text>
                     </div>
-                    <Button variant="default">Get started</Button>
+                    <Button variant="default">{formatMessage("Get started")}</Button>
                   </Group>
                 </div>
               </HoverCard.Dropdown>
             </HoverCard>
             <a href="#" className={classes.link}>
-              Learn
+              {formatMessage("Learn")}
             </a>
             <a href="#" className={classes.link}>
-              Academy
+              {formatMessage("Academy")}
             </a>
           </Group>
           <Group visibleFrom="sm">
@@ -176,8 +177,8 @@ export function HeaderMegaMenu() {
 
             {hideButton ? (
               <>
-                <Button variant="default">Log in</Button>
-                <Button>Sign up</Button>
+                <Button variant="default">{formatMessage("Log in")}</Button>
+                <Button>{formatMessage("Sign up")}</Button>
               </>
             ) : (
               <MenuAvatar />
@@ -201,12 +202,12 @@ export function HeaderMegaMenu() {
           <Divider my="sm" />
 
           <a href="#" className={classes.link}>
-            Home
+            {formatMessage("Home")}
           </a>
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
-                Features
+                {formatMessage("Features")}
               </Box>
               <IconChevronDown
                 style={{ width: rem(16), height: rem(16) }}
@@ -216,10 +217,10 @@ export function HeaderMegaMenu() {
           </UnstyledButton>
           <Collapse in={linksOpened}>{links}</Collapse>
           <a href="#" className={classes.link}>
-            Learn
+            {formatMessage("Learn")}
           </a>
           <a href="#" className={classes.link}>
-            Academy
+            {formatMessage(" Academy")}
           </a>
 
           <Divider my="sm" />
@@ -236,8 +237,8 @@ export function HeaderMegaMenu() {
             />
           </Group>
           <Group justify="center" grow pb="xl" px="md">
-            <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button variant="default">{formatMessage("Log in")}</Button>
+            <Button>{formatMessage("Sign up")}</Button>
           </Group>
         </ScrollArea>
       </Drawer>

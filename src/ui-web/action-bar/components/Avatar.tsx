@@ -6,11 +6,11 @@ import {
   Group,
   Text,
   Menu,
-  Tabs,
+  // Tabs,
   rem,
   useMantineTheme,
 } from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
+// import { useDisclosure } from "@mantine/hooks";
 import {
   IconLogout,
   IconHeart,
@@ -23,6 +23,7 @@ import {
   IconChevronDown,
 } from "@tabler/icons-react";
 import classes from "../styles/HeaderMegaMenu.module.css";
+import { useTranslationMessage } from "../../../hooks/use-translation-message";
 
 const user = {
   name: "Jane Spoonfighter",
@@ -30,26 +31,27 @@ const user = {
   image: "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-5.png",
 };
 
-const tabs = [
-  "Home",
-  "Orders",
-  "Education",
-  "Community",
-  "Forums",
-  "Support",
-  "Account",
-  "Helpdesk",
-];
+// const tabs = [
+//   "Home",
+//   "Orders",
+//   "Education",
+//   "Community",
+//   "Forums",
+//   "Support",
+//   "Account",
+//   "Helpdesk",
+// ];
 export const MenuAvatar = () => {
   const theme = useMantineTheme();
-  const [opened, { toggle }] = useDisclosure(false);
+  // const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
+  const { formatMessage } = useTranslationMessage();
 
-  const items = tabs.map((tab) => (
-    <Tabs.Tab value={tab} key={tab}>
-      {tab}
-    </Tabs.Tab>
-  ));
+  // const items = tabs.map((tab) => (
+  //   <Tabs.Tab value={tab} key={tab}>
+  //     {tab}
+  //   </Tabs.Tab>
+  // ));
   return (
     <Menu
       width={260}
@@ -80,7 +82,7 @@ export const MenuAvatar = () => {
             />
           }
         >
-          Liked posts
+          {formatMessage("Liked posts")}
         </Menu.Item>
         <Menu.Item
           leftSection={
@@ -91,7 +93,7 @@ export const MenuAvatar = () => {
             />
           }
         >
-          Saved posts
+          {formatMessage("Saved posts")}
         </Menu.Item>
         <Menu.Item
           leftSection={
@@ -102,41 +104,41 @@ export const MenuAvatar = () => {
             />
           }
         >
-          Your comments
+          {formatMessage("Your comments")}
         </Menu.Item>
 
-        <Menu.Label>Settings</Menu.Label>
+        <Menu.Label>{formatMessage("Settings")}</Menu.Label>
         <Menu.Item
           leftSection={<IconSettings style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
         >
-          Account settings
+          {formatMessage("Account settings")}
         </Menu.Item>
         <Menu.Item
           leftSection={
             <IconSwitchHorizontal style={{ width: rem(16), height: rem(16) }} stroke={1.5} />
           }
         >
-          Change account
+          {formatMessage("Change account")}
         </Menu.Item>
         <Menu.Item
           leftSection={<IconLogout style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
         >
-          Logout
+          {formatMessage("Logout")}
         </Menu.Item>
 
         <Menu.Divider />
 
-        <Menu.Label>Danger zone</Menu.Label>
+        <Menu.Label>{formatMessage("Danger zone")}</Menu.Label>
         <Menu.Item
           leftSection={<IconPlayerPause style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
         >
-          Pause subscription
+          {formatMessage("Pause subscription")}
         </Menu.Item>
         <Menu.Item
           color="red"
           leftSection={<IconTrash style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
         >
-          Delete account
+          {formatMessage("Delete account")}
         </Menu.Item>
       </Menu.Dropdown>
     </Menu>
