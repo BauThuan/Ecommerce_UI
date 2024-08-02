@@ -4,7 +4,6 @@ import { SCREENS_QUERY_PARAMS } from "../constant";
 
 export const useQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
-
   const getQueryParams = useMemo(() => {
     return searchParams.get(SCREENS_QUERY_PARAMS.SCREEN);
   }, [searchParams]);

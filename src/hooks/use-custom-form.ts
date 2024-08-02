@@ -1,5 +1,6 @@
 import { useForm, UseFormReturnType } from "@mantine/form";
 import { useTranslationMessage } from "./use-translation-message";
+import { VALIDATE_FORM_MESSAGE } from "../constant";
 interface FormValues {
   email: string;
   password: string;
@@ -25,18 +26,21 @@ export const useCustomForm = (): UseFormReturnType<FormValues> => {
       price: 0,
     },
     validate: {
-      email: (value: string) => (/^\S+@\S+$/.test(value) ? null : formatMessage("Invalid email")),
+      email: (value: string) =>
+        /^\S+@\S+$/.test(value) ? null : formatMessage(VALIDATE_FORM_MESSAGE.EMAIL),
       confirmPassword: (value, values) =>
-        value !== values.password ? formatMessage("Passwords did not match") : null,
-      name: (value) => (value && value.length < 2 ? "Name must have at least 2 letters" : null),
-      address: (value) => (value && value ? null : formatMessage("Address is required")),
+        value !== values.password ? formatMessage(VALIDATE_FORM_MESSAGE.PASSWORD) : null,
+      name: (value) =>
+        value && value.length < 2 ? formatMessage(VALIDATE_FORM_MESSAGE.NAME) : null,
+      address: (value) => (value && value ? null : formatMessage(VALIDATE_FORM_MESSAGE.ADDRESS)),
       phoneNumber: (value) =>
-        value && /^\d{10,15}$/.test(value) ? null : formatMessage("Invalid phone number"),
+        value && /^\d{10,15}$/.test(value)
+          ? null
+          : formatMessage(VALIDATE_FORM_MESSAGE.PHONE_NUMBER),
       quantity: (value) =>
-        value && value > 0 ? null : formatMessage("Quantity must be greater than 0"),
-      price: (value) => (value && value > 0 ? null : formatMessage("Price must be greater than 0")),
+        value && value > 0 ? null : formatMessage(VALIDATE_FORM_MESSAGE.QUANTITY),
+      price: (value) => (value && value > 0 ? null : formatMessage(VALIDATE_FORM_MESSAGE.PRICE)),
     },
   });
-
   return form;
 };

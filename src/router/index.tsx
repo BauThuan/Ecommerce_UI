@@ -5,6 +5,7 @@ import { Routes, Route, Outlet, Navigate } from "react-router-dom";
 
 import { PageAuthentication } from "../ui-web/page-authentication";
 import { PageDashBoard } from "../ui-web/page-dashboard";
+import { PageListings } from "../ui-web/page-listings-product";
 
 
 export const App = () => {
@@ -18,6 +19,10 @@ export const App = () => {
           <Route
             path={appRouteConstants.WEBSITE_DASHBOARD.INDEX}
             element={<PageDashBoard/>}
+          />
+          <Route
+            path={appRouteConstants.LISTING.INDEX}
+            element={<PageListings/>}
           />
         </Route>
       </Route>

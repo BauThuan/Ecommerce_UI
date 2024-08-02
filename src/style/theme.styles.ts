@@ -85,7 +85,7 @@ export const theme = createTheme({
       "#292E39",
       "#292E39",
       "#292E39",
-      "#292E39",
+      "#EEEEEE",
     ],
   },
   headings: {

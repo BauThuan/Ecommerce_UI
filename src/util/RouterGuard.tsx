@@ -4,7 +4,6 @@ import { appRouteConstants } from "../router/appRouteConstants";
 
 const RouterGuard = () => {
   const tokenRef = "ajjsdf";
-
   return tokenRef ? <Outlet /> : <Navigate to={appRouteConstants.AUTHENTICATION.INDEX} replace />;
 };
 

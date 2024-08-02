@@ -37,6 +37,7 @@
     "@mantine/spotlight": "^7.10.2",
     "@mantine/tiptap": "^7.10.2",
     "@tabler/icons-react": "^3.6.0",
+    "@tanstack/react-query-devtools": "^5.51.18",
     "@tiptap/extension-link": "^2.4.0",
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
@@ -46,6 +47,7 @@
     "i18next": "^23.11.5",
     "react": "^18.2.0",
     "react-i18next": "^14.1.2",
+    "react-query": "^3.39.3",
     "react-router-dom": "^6.23.1",
     "sass": "^1.77.5",
     "zustand": "^4.5.2"

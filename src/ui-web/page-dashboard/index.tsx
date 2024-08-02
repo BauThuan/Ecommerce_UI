@@ -1,3 +1,3 @@
 export const PageDashBoard = () => {
-  return <h1>Doas</h1>;
+  return <h1>Product</h1>;
 };
