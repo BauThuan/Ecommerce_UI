@@ -51,8 +51,20 @@ export function HeaderMegaMenu() {
   return (
     <>
       {isHidenMenuScreenAuthen && (
-        <Box py={10}>
-          <header className={classes.header}>
+        <Box
+          py={10}
+          sx={{
+            backgroundColor: theme.colors.dark[9],
+          }}
+        >
+          <header
+            style={{
+              backgroundColor: theme.colors.dark[9],
+              padding: 15,
+              zIndex: 1000,
+            }}
+            className={classes.header}
+          >
             <Group justify="space-between" h="100%">
               <Box display="flex">
                 <IconCart />

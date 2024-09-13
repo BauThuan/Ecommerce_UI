@@ -11,3 +11,13 @@ export type CarouselProps = {
   timeDelay?: number;
   listImages?: string[];
 };
+
+export type CategorieProps = {
+  w?: string;
+  h?: string;
+  display?: string;
+  alignItems?: string;
+  direction?: string;
+  justifyContent?: string;
+  listCategories?: unknown[];
+};

@@ -73,7 +73,7 @@ export const theme = createTheme({
       "#FFB700",
       "#FFB700",
       "#FFB700",
-      "#FFB700",
+      "#FFFFFF",
     ],
     dark: [
       "#1A162E",
@@ -84,7 +84,7 @@ export const theme = createTheme({
       "#292E39",
       "#292E39",
       "#292E39",
-      "#292E39",
+      "#000000",
       "#EEEEEE",
     ],
   },

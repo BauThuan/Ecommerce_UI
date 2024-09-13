@@ -1,9 +1,10 @@
 import { useRef } from "react";
-import { Image } from "@mantine/core";
+// import { Image } from "@mantine/core";
 import Autoplay from "embla-carousel-autoplay";
 import { Carousel } from "@mantine/carousel";
 import { listImagesUrl } from "../constants";
 import { CarouselProps } from "../type";
+import Banner from "./assets/banner.svg?react";
 
 export const CarouselCustom = (props: CarouselProps) => {
   // You can customize the carousel yourself
@@ -15,7 +16,7 @@ export const CarouselCustom = (props: CarouselProps) => {
     withControls = true,
     slideGap = "md",
     slideSize = "100%",
-    radiusImage = "md",
+    // radiusImage = "md",
     bdRadiusCr = "10px",
     controlSize = 27,
     timeDelay = 2000,
@@ -46,7 +47,8 @@ export const CarouselCustom = (props: CarouselProps) => {
     >
       {images.map((url) => (
         <Carousel.Slide key={url}>
-          <Image src={url} radius={radiusImage} />
+          {/* <Image src={url} radius={radiusImage} /> */}
+          <Banner />
         </Carousel.Slide>
       ))}
     </Carousel>
