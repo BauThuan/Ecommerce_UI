@@ -12,7 +12,6 @@ export const getListAllCategories = async () => {
   }
 };
 
-// Custom hook để sử dụng query
 export const useGetCategories = (enabled = true) => {
   return useQuery({
     queryKey: ["categories"],
