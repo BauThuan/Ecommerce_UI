@@ -1,7 +1,10 @@
 import { Box, Text } from "@mantine/core";
 import { CarouselCustom } from "../../components";
 import { Categories } from "../../components";
+import { useGetCategories } from "./hooks/use-get-categories";
 export const PageDashBoard = () => {
+  const { data, error, isLoading } = useGetCategories();
+  console.log(">>>> check get api", data, error, isLoading);
   return (
     <Box
       sx={{

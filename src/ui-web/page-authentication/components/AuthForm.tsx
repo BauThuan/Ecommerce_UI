@@ -21,22 +21,29 @@ import { useCustomForm } from "../../../hooks/use-custom-form";
 
 import { useNavigate } from "react-router-dom";
 import { appRouteConstants } from "../../../router/appRouteConstants";
+import { useSignIn } from "../hooks/use-sign-in";
 // import Cookies from "js-cookie";
 
 export const AuthForm = () => {
   const { getQueryParams } = useQueryParams();
   const { formatMessage } = useTranslationMessage();
   const { isMobile } = useMediaQueryScreen();
+  const { mutate: signIn, isPending, isError, isSuccess } = useSignIn();
   const navigate = useNavigate();
   const form = useCustomForm();
   const theme = useMantineTheme();
+  console.log(isError, isSuccess, isPending);
 
   const showInputConfirmPassword = useMemo(() => {
     return getQueryParams === SCREENS_NAME_AUTHEN.SIGN_UP;
   }, [getQueryParams]);
 
   const handleSignIn = () => {
-    window.history.replaceState(null, "", `/${appRouteConstants.WEBSITE_DASHBOARD.INDEX}`);
+    signIn({
+      identifier: "manager@gmail.com",
+      password: "123456",
+    });
+    // window.history.replaceState(null, "", `/${appRouteConstants.WEBSITE_DASHBOARD.INDEX}`);
     navigate(`/${appRouteConstants.WEBSITE_DASHBOARD.INDEX}`, { replace: true });
   };
 
