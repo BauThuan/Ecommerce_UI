@@ -13,7 +13,7 @@ export const ListOfProducts = () => {
   if (isLoading) {
     return <Loading />;
   }
-  console.log(data?.categories, isLoading, data?.products);
+
   return (
     <Box
       sx={{
@@ -32,7 +32,7 @@ export const ListOfProducts = () => {
       </Box>
       <Box w="95%" mt={70}>
         <Text>{formatMessage("Products")}</Text>
-        <CardProduct />
+        <CardProduct listProducts={data?.products} />
       </Box>
     </Box>
   );

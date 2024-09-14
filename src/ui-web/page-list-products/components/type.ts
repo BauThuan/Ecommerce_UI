@@ -1,9 +1,14 @@
-interface CategoryItem {
+interface ICategoryItem {
   attributes: {
+    description: string;
     name: string;
-    // Các thuộc tính khác của attributes nếu cần
+    price: string;
+    oldPrice: string;
   };
 }
+
+interface IProductIrem extends ICategoryItem {}
+
 export type CategorieProps = {
   w?: string;
   h?: string;
@@ -11,5 +16,9 @@ export type CategorieProps = {
   alignItems?: string;
   direction?: string;
   justifyContent?: string;
-  listCategories?: CategoryItem[];
+  listCategories: ICategoryItem[];
+};
+
+export type ProductProps = {
+  listProducts: IProductIrem[];
 };
