@@ -1,14 +1,16 @@
 interface ICategoryItem {
   attributes: {
-    description: string;
     name: string;
+  };
+}
+
+interface IProductItem {
+  attributes: ICategoryItem["attributes"] & {
+    description: string;
     price: string;
     oldPrice: string;
   };
 }
-
-interface IProductIrem extends ICategoryItem {}
-
 export type CategorieProps = {
   w?: string;
   h?: string;
@@ -20,5 +22,5 @@ export type CategorieProps = {
 };
 
 export type ProductProps = {
-  listProducts: IProductIrem[];
+  listProducts: IProductItem[];
 };
