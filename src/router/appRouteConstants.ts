@@ -11,8 +11,8 @@ export const appRouteConstants = {
     STATE: "/builder/:resumeState/:listingId",
     STATE_CREATE: "/builder/:resumeState",
   },
-  LISTING: {
-    INDEX: "/listings",
+  PRODUCTS: {
+    INDEX: "/products",
   },
   BOOKING: {
     INDEX: "/bookings",

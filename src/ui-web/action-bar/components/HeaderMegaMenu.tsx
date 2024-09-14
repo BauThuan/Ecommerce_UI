@@ -15,7 +15,7 @@ import {
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { IconSearch } from "@tabler/icons-react";
-import { IconCart } from "../assets/IconCart";
+import IconCart from "../assets/IconCart.svg?react";
 import classes from "../styles/HeaderMegaMenu.module.css";
 import { MenuAvatar } from "./Avatar";
 import { useTranslationMessage } from "../../../hooks/use-translation-message";

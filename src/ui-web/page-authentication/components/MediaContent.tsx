@@ -1,7 +1,7 @@
 import { Box, Text, useMantineTheme } from "@mantine/core";
 import { useTranslationMessage } from "../../../hooks/use-translation-message";
-import { IconLogoAuthen } from "../assets/IconLogoAuthen";
-import { useMediaQueryScreen } from "../../../hooks/use-media-query";
+import IconLogoAuthen from "../assets/IconLogoAuthen.svg?react";
+import { useMediaQueryScreen } from "../../../hooks";
 export const MediaContent = () => {
   const { formatMessage } = useTranslationMessage();
   const theme = useMantineTheme();

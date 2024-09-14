@@ -16,7 +16,7 @@ import { SCREENS_NAME_AUTHEN } from "../constant";
 // import { COOKIE_OPTIONS } from "../constant";
 import { ContentHeader } from "./ContentHeader";
 import { ContentFooter } from "./ContentFooter";
-import { useMediaQueryScreen } from "../../../hooks/use-media-query";
+import { useMediaQueryScreen } from "../../../hooks";
 import { useCustomForm } from "../../../hooks/use-custom-form";
 
 import { useNavigate } from "react-router-dom";

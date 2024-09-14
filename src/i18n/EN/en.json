@@ -21,5 +21,7 @@
    "Address is required": "Address is required",
    "Invalid phone number": "Invalid phone number",
    "Quantity must be greater than 0": "Quantity must be greater than 0",
-   "Price must be greater than 0": "Price must be greater than 0"
+   "Price must be greater than 0": "Price must be greater than 0",
+   "Browse Categories": "Browse Categories",
+   "Products": "Products"
 }

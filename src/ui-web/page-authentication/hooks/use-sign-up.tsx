@@ -1,7 +1,7 @@
 // authHooks.js
 import { useMutation } from "@tanstack/react-query";
-import apiClient from "../../../api/apiClient";
-import apiPaths from "../../../api/apiPath";
+import { API_CLIENT } from "../../../api";
+import { API_PATHS } from "../../../api";
 
 interface IAuthen {
   username: string;
@@ -12,7 +12,7 @@ interface IAuthen {
 
 export const signUp = async (registerCredentials: IAuthen) => {
   try {
-    const response = await apiClient.post(apiPaths.auth.register, registerCredentials);
+    const response = await API_CLIENT.post(API_PATHS.AUTH.REGISTER, registerCredentials);
     return response.data;
   } catch (error) {
     console.log(error);

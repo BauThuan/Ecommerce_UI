@@ -3,7 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { appRouteConstants } from "../router/appRouteConstants";
 
 const RouterGuard = () => {
-  const tokenRef = "ajjsdf";
+  const tokenRef = localStorage.getItem('token');
   return tokenRef ? <Outlet /> : <Navigate to={appRouteConstants.AUTHENTICATION.INDEX} replace />;
 };
 

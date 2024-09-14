@@ -1,20 +1,22 @@
-const apiPaths = {
-  auth: {
-    login: "/auth/local",
-    register: "/auth/local/register",
+export const API_PATHS = {
+  AUTH: {
+    LOGIN: "/auth/local",
+    REGISTER: "/auth/local/register",
     refreshToken: "/users/me?populate=role",
   },
-  users: {
-    getUser: (userId: number) => `/users/${userId}`,
-    listUsers: "/users",
+  CATEGORIES: {
+    GET_ALL_CATEGORIES: "/categories",
   },
-  posts: {
-    getPosts: "/posts",
-    getPostById: (postId: number) => `/posts/${postId}`,
-  },
-  categories: {
-    getAll: "/categories",
+  PRODUCTS: {
+    GET_ALL_PRODUCTS: "/products?populate=*",
   },
 };
 
-export default apiPaths;
+// users: {
+//   getUser: (userId: number) => `/users/${userId}`,
+//   listUsers: "/users",
+// },
+// posts: {
+//   getPosts: "/posts",
+//   getPostById: (postId: number) => `/posts/${postId}`,
+// },

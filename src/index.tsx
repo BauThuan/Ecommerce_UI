@@ -5,7 +5,6 @@ import { emotionTransform, MantineEmotionProvider } from "@mantine/emotion";
 import { theme } from "./style/theme.styles";
 import { useChangeColorSchemeStore } from "./store/use-change-color-scheme";
 import { I18nextProvider } from "react-i18next";
-import { ActionBar } from "./ui-web/action-bar";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import i18n from "./i18n/locale.language";
@@ -27,10 +26,7 @@ export const Root = () => {
           <BrowserRouter>
             <QueryClientProvider client={queryClient}>
               <ReactQueryDevtools initialIsOpen={false} />
-              <div>
-                <ActionBar />
-                <App />
-              </div>
+              <App />
             </QueryClientProvider>
           </BrowserRouter>
         </I18nextProvider>

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiClient = axios.create({
+export const API_CLIENT = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   timeout: 10000,
   headers: {
@@ -9,7 +9,7 @@ const apiClient = axios.create({
 });
 
 // Thêm request interceptor để cập nhật token trước mỗi request
-apiClient.interceptors.request.use(
+API_CLIENT.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -23,7 +23,7 @@ apiClient.interceptors.request.use(
 );
 
 // Thêm response interceptor để xử lý lỗi
-apiClient.interceptors.response.use(
+API_CLIENT.interceptors.response.use(
   function (response) {
     return response;
   },
@@ -34,5 +34,3 @@ apiClient.interceptors.response.use(
     return Promise.reject(error);
   },
 );
-
-export default apiClient;

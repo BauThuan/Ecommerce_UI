@@ -1,7 +1,7 @@
-import { IconCart } from "../assets/IconCart";
+import IconCart from "../assets/IconCart.svg?react";
 import { Box, Text, Title, useMantineTheme } from "@mantine/core";
 import { useTranslationMessage } from "../../../hooks/use-translation-message";
-import { useMediaQueryScreen } from "../../../hooks/use-media-query";
+import { useMediaQueryScreen } from "../../../hooks";
 
 export const ContentHeader = () => {
   const { formatMessage } = useTranslationMessage();
