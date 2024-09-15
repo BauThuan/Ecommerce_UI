@@ -3,6 +3,8 @@ import { useMutation } from "@tanstack/react-query";
 import { API_CLIENT } from "../../../api";
 import { API_PATHS } from "../../../api";
 import { useUserStore } from "../../../store";
+import { useNavigate } from "react-router-dom";
+import { appRouteConstants } from "../../../router/appRouteConstants";
 interface IAuthen {
   identifier: string;
   password: string;
@@ -19,14 +21,17 @@ export const signIn = async (loginCredentials: IAuthen) => {
 
 export const useSignIn = () => {
   const { setInforUser } = useUserStore();
+  const navigate = useNavigate();
   return useMutation({
     mutationFn: (loginCredentials: IAuthen) => {
       return signIn(loginCredentials);
     },
     onSuccess: (data) => {
-      setInforUser(data);
+      setInforUser(data.user);
+      localStorage.setItem("user", JSON.stringify(data.user));
       localStorage.setItem("token", data.jwt);
       localStorage.setItem("refreshToken", data.jwt);
+      navigate(appRouteConstants.PRODUCTS.INDEX);
     },
     onError: (error) => {
       console.error("Sign-in failed:", error);

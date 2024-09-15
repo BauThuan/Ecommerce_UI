@@ -24,6 +24,8 @@ import {
 } from "@tabler/icons-react";
 import classes from "../styles/HeaderMegaMenu.module.css";
 import { useTranslationMessage } from "../../../hooks/use-translation-message";
+import { useNavigate } from "react-router-dom";
+import { appRouteConstants } from "../../../router/appRouteConstants";
 
 const user = {
   name: "Jane Spoonfighter",
@@ -43,6 +45,8 @@ const user = {
 // ];
 export const MenuAvatar = () => {
   const theme = useMantineTheme();
+  const navigate = useNavigate();
+  const inforUser = JSON.parse(localStorage.getItem("user") ?? "null");
   // const [opened, { toggle }] = useDisclosure(false);
   const [userMenuOpened, setUserMenuOpened] = useState(false);
   const { formatMessage } = useTranslationMessage();
@@ -52,6 +56,12 @@ export const MenuAvatar = () => {
   //     {tab}
   //   </Tabs.Tab>
   // ));
+  const handleLogOut = () => {
+    localStorage.removeItem("refreshToken");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate(appRouteConstants.AUTHENTICATION.INDEX);
+  };
   return (
     <Menu
       width={260}
@@ -66,13 +76,13 @@ export const MenuAvatar = () => {
           <Group gap={7}>
             <Avatar src={user.image} alt={user.name} radius="xl" size={20} />
             <Text fw={500} size="sm" lh={1} mr={3}>
-              {user.name}
+              {inforUser?.name}
             </Text>
             <IconChevronDown style={{ width: rem(12), height: rem(12) }} stroke={1.5} />
           </Group>
         </UnstyledButton>
       </Menu.Target>
-      <Menu.Dropdown>
+      <Menu.Dropdown sx={{ zIndex: "1500 !important" }}>
         <Menu.Item
           leftSection={
             <IconHeart
@@ -121,6 +131,7 @@ export const MenuAvatar = () => {
           {formatMessage("Change account")}
         </Menu.Item>
         <Menu.Item
+          onClick={() => handleLogOut()}
           leftSection={<IconLogout style={{ width: rem(16), height: rem(16) }} stroke={1.5} />}
         >
           {formatMessage("Logout")}

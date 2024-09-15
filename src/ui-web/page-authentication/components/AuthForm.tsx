@@ -16,9 +16,11 @@ import {
 } from "@mantine/core";
 import { GoogleButton } from "./GoogleButton";
 import { TwitterButton } from "./TwitterButton";
+import { useSignIn } from "../hooks/use-sign-in";
 
 export function AuthForm(props: PaperProps) {
   const [type, toggle] = useToggle(["login", "register"]);
+  const { mutate: signIn } = useSignIn();
   const form = useForm({
     initialValues: {
       email: "",
@@ -29,7 +31,7 @@ export function AuthForm(props: PaperProps) {
 
     validate: {
       email: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid email"),
-      password: (val) => (val.length <= 6 ? "Password should include at least 6 characters" : null),
+      password: (val) => (val.length <= 5 ? "Password should include at least 5 characters" : null),
     },
   });
 
@@ -49,6 +51,19 @@ export function AuthForm(props: PaperProps) {
 
         <form
           onSubmit={form.onSubmit((value) => {
+            switch (type) {
+              case "login":
+                signIn({
+                  identifier: value.email,
+                  password: value.password,
+                });
+                break;
+              case "register":
+                // code block
+                break;
+              default:
+              // code block
+            }
             console.log(value);
           })}
         >
