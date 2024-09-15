@@ -2,7 +2,7 @@ export const API_PATHS = {
   AUTH: {
     LOGIN: "/auth/local",
     REGISTER: "/auth/local/register",
-    refreshToken: "/users/me?populate=role",
+    REFRESH_TOKEN: "/users/me?populate=role",
   },
   CATEGORIES: {
     GET_ALL_CATEGORIES: "/categories",

@@ -21,6 +21,7 @@ export const useSignIn = () => {
     mutationFn: signIn,
     onSuccess: (data) => {
       localStorage.setItem("token", data.jwt);
+      localStorage.setItem("refreshToken", data.jwt);
     },
     onError: (error) => {
       console.error("Sign-in failed:", error);
