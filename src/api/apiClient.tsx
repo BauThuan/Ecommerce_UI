@@ -1,5 +1,6 @@
 import axios from "axios";
 import { API_PATHS } from "./apiPath";
+import { appRouteConstants } from "../router/appRouteConstants";
 
 export const API_CLIENT = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -49,10 +50,11 @@ API_CLIENT.interceptors.response.use(
         // sau khi lấy được token mới lập tức cập nhật lại Bearer token ở header
         originalRequest.headers["Authorization"] = `Bearer ${newAccessToken}`;
 
+        // Gọi lại request với accessToken mới để lấy lại thông tin
         return API_CLIENT(originalRequest);
       } catch (err) {
         // Nếu refresh token cũng hết hạn, điều hướng người dùng về trang đăng nhập
-        window.location.href = "/login";
+        window.location.href = appRouteConstants.AUTHENTICATION.INDEX;
         return Promise.reject(err);
       }
     }

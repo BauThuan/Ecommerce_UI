@@ -8,7 +8,8 @@ export const API_PATHS = {
     GET_ALL_CATEGORIES: "/categories",
   },
   PRODUCTS: {
-    GET_ALL_PRODUCTS: "/products?populate=*",
+    GET_PRODUCTS: "/products?populate=*",
+    GET_PRODUCTS_BY_SLUG: (slug: string) => `/products/${slug}?populate=*`,
   },
 };
 

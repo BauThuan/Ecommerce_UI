@@ -14,7 +14,7 @@ const getListAllCategories = async () => {
 
 const getListAllProducts = async () => {
   try {
-    const response = await API_CLIENT.get(API_PATHS.PRODUCTS.GET_ALL_PRODUCTS);
+    const response = await API_CLIENT.get(API_PATHS.PRODUCTS.GET_PRODUCTS);
     return response.data.data;
   } catch (error) {
     console.log(error);

@@ -1,172 +1,109 @@
+import { useToggle, upperFirst } from "@mantine/hooks";
+import { useForm } from "@mantine/form";
 import {
-  PasswordInput,
   TextInput,
+  PasswordInput,
+  Text,
+  Paper,
+  Group,
+  PaperProps,
+  Button,
+  Divider,
   Checkbox,
   Anchor,
-  Group,
-  Button,
-  Box,
-  useMantineTheme,
+  Stack,
+  Container,
 } from "@mantine/core";
-import { IconMail, IconLock, IconLockOpen, IconBrandGoogleFilled } from "@tabler/icons-react";
-import { useTranslationMessage } from "../../../hooks/use-translation-message";
-import { useQueryParams } from "../../../hooks/use-query-params";
-import { useEffect, useMemo } from "react";
-import { SCREENS_NAME_AUTHEN } from "../constant";
-// import { COOKIE_OPTIONS } from "../constant";
-import { ContentHeader } from "./ContentHeader";
-import { ContentFooter } from "./ContentFooter";
-import { useMediaQueryScreen } from "../../../hooks";
-import { useCustomForm } from "../../../hooks/use-custom-form";
+import { GoogleButton } from "./GoogleButton";
+import { TwitterButton } from "./TwitterButton";
 
-import { useNavigate } from "react-router-dom";
-import { appRouteConstants } from "../../../router/appRouteConstants";
-import { useSignIn } from "../hooks/use-sign-in";
-// import Cookies from "js-cookie";
+export function AuthForm(props: PaperProps) {
+  const [type, toggle] = useToggle(["login", "register"]);
+  const form = useForm({
+    initialValues: {
+      email: "",
+      name: "",
+      password: "",
+      terms: true,
+    },
 
-export const AuthForm = () => {
-  const { getQueryParams } = useQueryParams();
-  const { formatMessage } = useTranslationMessage();
-  const { isMobile } = useMediaQueryScreen();
-  const { mutate: signIn, isPending, isError, isSuccess } = useSignIn();
-  const navigate = useNavigate();
-  const form = useCustomForm();
-  const theme = useMantineTheme();
-  console.log(isError, isSuccess, isPending);
+    validate: {
+      email: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid email"),
+      password: (val) => (val.length <= 6 ? "Password should include at least 6 characters" : null),
+    },
+  });
 
-  const showInputConfirmPassword = useMemo(() => {
-    return getQueryParams === SCREENS_NAME_AUTHEN.SIGN_UP;
-  }, [getQueryParams]);
-
-  const handleSignIn = () => {
-    signIn({
-      identifier: "manager@gmail.com",
-      password: "123456",
-    });
-    // window.history.replaceState(null, "", `/${appRouteConstants.WEBSITE_DASHBOARD.INDEX}`);
-    navigate(`/${appRouteConstants.WEBSITE_DASHBOARD.INDEX}`, { replace: true });
-  };
-
-  // const saveLoginInfo = () => {
-  //   const userInfo: string = "Hello";
-  //   Cookies.set("authToken", userInfo, COOKIE_OPTIONS);
-  //   Cookies.set("userId", userInfo, COOKIE_OPTIONS);
-  //   Cookies.set("userName", userInfo, COOKIE_OPTIONS);
-  // };
-
-  useEffect(() => {
-    if (!showInputConfirmPassword) {
-      form.setFieldValue("confirmPassword", "");
-    }
-  }, [showInputConfirmPassword, form]);
   return (
-    <Box
-      h="100%"
-      w={isMobile ? "100%" : "50%"}
-      display="flex"
-      pt={isMobile ? 50 : 70}
-      sx={{
-        flexDirection: "column",
-        alignItems: "center",
-        boxSizing: "border-box",
-      }}
-    >
-      <ContentHeader />
-      <Box w={isMobile ? "90%" : "50%"}>
-        <form onSubmit={form.onSubmit((values) => console.log(values))}>
-          <TextInput
-            mt="sm"
-            placeholder={formatMessage("Email")}
-            key={form.key("email")}
-            {...form.getInputProps("email")}
-            rightSection={<IconMail size="20px" stroke={1.5} />}
-          />
-          <PasswordInput
-            mt="sm"
-            placeholder={formatMessage("Password")}
-            key={form.key("password")}
-            {...form.getInputProps("password")}
-            visibilityToggleIcon={({ reveal }) =>
-              reveal ? (
-                <IconLockOpen size="20px" stroke={1.5} />
-              ) : (
-                <IconLock size="20px" stroke={1.5} />
-              )
-            }
-          />
+    <Container size={420} my={40}>
+      <Paper radius="md" p="xl" withBorder {...props}>
+        <Text size="lg" fw={500}>
+          Welcome to Grocerymart, {type} with
+        </Text>
 
-          {showInputConfirmPassword && (
+        <Group grow mb="md" mt="md">
+          <GoogleButton radius="xl">Google</GoogleButton>
+          <TwitterButton radius="xl">Twitter</TwitterButton>
+        </Group>
+
+        <Divider label="Or continue with email" labelPosition="center" my="lg" />
+
+        <form
+          onSubmit={form.onSubmit((value) => {
+            console.log(value);
+          })}
+        >
+          <Stack>
+            {type === "register" && (
+              <TextInput
+                label="Name"
+                placeholder="Your name"
+                value={form.values.name}
+                onChange={(event) => form.setFieldValue("name", event.currentTarget.value)}
+                radius="md"
+              />
+            )}
+
+            <TextInput
+              required
+              label="Email"
+              placeholder="hello@gmail.com"
+              value={form.values.email}
+              onChange={(event) => form.setFieldValue("email", event.currentTarget.value)}
+              error={form.errors.email && "Invalid email"}
+              radius="md"
+            />
+
             <PasswordInput
-              mt="sm"
-              placeholder={formatMessage("Confirm Password")}
-              key={form.key("confirmPassword")}
-              {...form.getInputProps("confirmPassword")}
-              visibilityToggleIcon={({ reveal }) =>
-                reveal ? (
-                  <IconLockOpen size="20px" stroke={1.5} />
-                ) : (
-                  <IconLock size="20px" stroke={1.5} />
-                )
-              }
+              required
+              label="Password"
+              placeholder="Your password"
+              value={form.values.password}
+              onChange={(event) => form.setFieldValue("password", event.currentTarget.value)}
+              error={form.errors.password && "Password should include at least 6 characters"}
+              radius="md"
             />
-          )}
-          <Box
-            mt={10}
-            display="flex"
-            sx={{
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Checkbox
-              size="xs"
-              sx={{
-                fontWeight: 500,
-                color: theme.colors.neutral[1],
-              }}
-              label={formatMessage("Set as default card")}
-              onChange={(event) => {
-                console.log(">>> check kerd", event.currentTarget.checked);
-                // saveLoginInfo();
-              }}
-            />
-            <Anchor
-              href="#"
-              sx={{
-                fontWeight: 500,
-                fontSize: 12,
-                color: theme.colors.scarlet[9],
-              }}
-            >
-              {formatMessage("Recovery Password")}
+
+            {type === "register" && (
+              <Checkbox
+                label="I accept terms and conditions"
+                checked={form.values.terms}
+                onChange={(event) => form.setFieldValue("terms", event.currentTarget.checked)}
+              />
+            )}
+          </Stack>
+
+          <Group justify="space-between" mt="xl">
+            <Anchor component="button" type="button" c="dimmed" onClick={() => toggle()} size="xs">
+              {type === "register"
+                ? "Already have an account? Login"
+                : "Don't have an account? Register"}
             </Anchor>
-          </Box>
-          <Group justify="flex-end" mt="md">
-            <Button
-              onClick={handleSignIn}
-              color={theme.colors.autumn[0]}
-              sx={{
-                color: theme.colors.dark[0],
-                fontWeight: 500,
-              }}
-              fullWidth
-              type="submit"
-            >
-              {formatMessage("Login")}
-            </Button>
-            <Button
-              justify="center"
-              fullWidth
-              leftSection={<IconBrandGoogleFilled />}
-              variant="default"
-              mt="md"
-            >
-              {formatMessage("Sign in with Gmail")}
+            <Button type="submit" radius="xl">
+              {upperFirst(type)}
             </Button>
           </Group>
         </form>
-      </Box>
-      <ContentFooter />
-    </Box>
+      </Paper>
+    </Container>
   );
-};
+}

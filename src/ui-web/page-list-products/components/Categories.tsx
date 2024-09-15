@@ -1,7 +1,7 @@
 import { Card, Image, Text, Box, useMantineTheme } from "@mantine/core";
 import { CategorieProps } from "./type";
 import { gridStyles } from "./style";
-
+import { useGetProductsBySlug } from "../hooks";
 export const Categories = (props: CategorieProps) => {
   const {
     w = "300px",
@@ -11,8 +11,12 @@ export const Categories = (props: CategorieProps) => {
     alignItems = "center",
     justifyContent = "space-between",
   } = props;
-
+  const { data, isLoading } = useGetProductsBySlug(
+    true,
+    "laptop-gaming-acer-aspire-7-a715-42-g-r05-g",
+  );
   const theme = useMantineTheme();
+  console.log(">>> chekc data", data, isLoading);
 
   return (
     <Box sx={gridStyles(theme)}>
